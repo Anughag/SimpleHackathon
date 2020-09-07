@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <title>Defect NLP Search</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+
+<body>
+  
+  
+  <div class="topnav" id="myTopnav">
+    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="https://eu-gb.dataplatform.cloud.ibm.com/dashboards/2972d783-330a-4735-b580-270c5416afcc/view/6c34c13e03960afe14d4eae4079c240f74662459b5bb840087d07b4907357097a96f4697c8284f59dd470435f2bf475ec8" _target="_blank""><i class="fa fa-fw fa-envelope"></i> Dashboard</a>
+
+    
+  </div>
+
+  
+   
+  
+  <div class="jumbotron text-center">
+    
+    <h1>Bug Slayers</h1> 
+   
+      <div style="align-content: center margin-left:150px;">
+        <a style="align-content: center margin-left:150px;"href="https://eu-gb.dataplatform.cloud.ibm.com/dashboards/2972d783-330a-4735-b580-270c5416afcc/view/6c34c13e03960afe14d4eae4079c240f74662459b5bb840087d07b4907357097a96f4697c8284f59dd470435f2bf475ec8" _target="_blank">
+          <button type="button" class="btn btn-warning" style="align-content: center margin-left:150px;" >View Visualization
+          </button>  
+          </a>   
+        </div>
+  </div>
+  <hr>
+  <session id="dashboard">
+
+    
+  <div class="container">
+    <div class="row">
+      
+     
+      <div class="col-md">
+        <h2 class="text-center">NLP Search</h2>
+        <form class="text-center"style=" padding-top:20px;margin-bottom:10px;height:500px;width:1200px" method="POST" action="/predict">
+          <table width="100%">
+            <tbody>
+                <tr>
+                  <td>{{ form.num1.label }}</td>
+                  <td style="width:300px;">
+                    <div class="form-field"> {{ form.num1 }}</div>
+                  </td></tr>
+            </tbody>
+          </table><br>
+          <input class="btn btn-warning" id="submit" style="margin-bottom: 10px;margin-left:-82px;" name="submit" type="submit" onclick="startSpinner()" value="Find the Similarities">
+      
+          
+          
+       
+      
+        <div class="d-flex justify-content-center">
+          <div id="loader" style="color:black; display: none;" class="spinner-border"></div>
+        </div>
+        <div class="output-container">
+          <center>
+            <div id="output" style="margin:20px;"> 
+      
+           <div id="b" >
+             
+            {% for table in tables %}
+            {{ table|safe }}
+            {% endfor %}
+            
+           
+           </div>
+            
+            </div>
+          </center>
+        </div>
+      </form>
+      </div>
+      
+    </div>
+  </div>
+  </session>
+  
+  <script>
+
+window.onload = function exampleFunction() { 
+  
+  // var output = document.getElementById("output");
+  // output.style.display = "none"
+} 
+
+    function startSpinner() {
+      var x = document.getElementById("loader");
+      x.style.display = "block";
+      var output = document.getElementById("output");
+      output.style.display = "none"
+     
+      setTimeout(function () {
+        var y = document.getElementById("output");
+        var x = document.getElementById("loader");
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+        
+        x.style.display = "none";
+        y.style.display = "block"
+        a.style.display = "block"
+        b.style.display = "block"
+        
+      }, 40000);
+     
+      
+      
+    }
+
+    function startSpinner2() {
+      var x = document.getElementById("loader1");
+      x.style.display = "block";
+      var output = document.getElementById("output1");
+      output.style.display = "none"
+     
+      setTimeout(function () {
+        var y = document.getElementById("output1");
+        var x = document.getElementById("loader1");
+        var a = document.getElementById("a1");
+        var b = document.getElementById("b1");
+        
+        x.style.display = "none";
+        y.style.display = "block"
+        a.style.display = "block"
+        b.style.display = "block"
+        
+      }, 3000);
+     
+      
+      
+    }
+    
+  </script>
+
+</body>
+
+</html>
